@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  texiteditor:
+    build:
+      context: .
+      dockerfile: Dockerfile.browser
+    ports:
+      - "6080:80"   # noVNC web UI
+      - "5901:5901" # optional: connect with a VNC client
+    environment:
+      - RESOLUTION=1280x800
+    volumes:
+      - ./:/opt/texiteditor

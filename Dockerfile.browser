@@ -1,0 +1,17 @@
+FROM dorowu/ubuntu-desktop-lxde-vnc:focal
+
+# Install Python + Tkinter and fonts
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      python3 python3-pip python3-tk fonts-firacode && \
+    rm -rf /var/lib/apt/lists/*
+
+# App
+WORKDIR /opt/texiteditor
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir -r requirements.txt || true
+COPY texiteditor.py ./
+
+# Auto-start TexitEditor when the desktop session launches
+RUN mkdir -p /etc/xdg/lxsession/LXDE && \
+    echo '@bash -lc "python3 /opt/texiteditor/texiteditor.py"' >> /etc/xdg/lxsession/LXDE/autostart
