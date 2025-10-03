@@ -1,284 +1,141 @@
 # TexitEditor
 
-TexitEditor is a lightweight text editing application written in Python. It aims to provide a simple, extensible, and scriptable environment for quick note‑taking, code snippets, and general plain-text authoring.
+![TexitEditor Logo](assets/images/logo.png)
 
-> NOTE: This README is a documentation draft based on limited repository content. Please adjust sections (e.g., features, roadmap, architecture) to reflect the actual implementation once source files are added.
+## Overview
+TexitEditor is a modern text editor application inspired by TextPad but with a contemporary UI and retro text styling. Perfect for note-taking and text editing with a nostalgic feel combined with modern functionality.
 
----
-
-## Key Features (Planned / Proposed)
-
-- Fast startup with minimal dependencies
-- Multi-document editing (tabbed or windowed)
-- Basic editing actions: open, save, save as, undo/redo, find/replace
-- Syntax highlighting (via Pygments or Tkinter `Text` tags) for common languages
-- Configurable font, themes (light/dark), and line numbers
-- Auto-detect file encoding (UTF-8 fallback)
-- Recent files list
-- Pluggable extensions (simple Python hooks)
-- Optional spell checking (e.g., via `pyenchant`)
-- Cross-platform (Windows / Linux / macOS)
-
----
+## Features
+- **Clean, Modern Interface**: Responsive UI with intuitive controls
+- **Retro Text Styling**: Enjoy the nostalgic feel of classic text editors
+- **Custom Color Schemes**: Blue, green, and purple shade options to customize your experience
+- **Basic Text Operations**: Cut, copy, paste, undo, redo
+- **File Management**: Open, save, and create new text files
+- **Find & Replace**: Quickly locate and modify text
+- **Syntax Highlighting**: Support for common programming languages
+- **Line Numbers**: Toggle-able line numbering
+- **Auto-save**: Prevent data loss with automatic saving
+- **Customizable Font Options**: Change font style and size
 
 ## Screenshots
-
-(Add screenshots or animated GIFs here once available.)
-
-```
-docs/images/
-├── main-window.png
-└── dark-theme.png
-```
-
----
-
-## Architecture Overview (Proposed)
-
-| Layer | Responsibility | Example Components |
-|-------|----------------|--------------------|
-| UI Layer | Rendering windows, menus, dialogs | Tkinter / PyQt widgets |
-| Editor Core | Buffer management, undo stack | `editor/buffer.py` |
-| Services | File I/O, encoding detection, settings | `services/files.py`, `services/settings.py` |
-| Extensions | User-provided enhancements | `extensions/` |
-| Utilities | Logging, helpers | `utils/` |
-
----
+![Main Interface](assets/images/screenshot1.png)
+![Settings Panel](assets/images/screenshot2.png)
 
 ## Installation
 
 ### Prerequisites
-- Python 3.9+ (recommend latest stable)
-- (If GUI uses Tkinter) Tk libraries (bundled with most Python distributions)
-- (Optional) Virtual environment
+- Python 3.8 or higher
+- pip package manager
 
-### Clone
+### Steps
+1. Clone the repository:
 ```bash
 git clone https://github.com/almamun80git/TexitEditor.git
 cd TexitEditor
 ```
 
-### Create Virtual Environment (Optional)
+2. Create and activate a virtual environment (recommended):
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m venv venv
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
 ```
 
-### Install Dependencies
-(Adjust once `requirements.txt` or `pyproject.toml` exists.)
-
+3. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-If using `pyproject.toml` (Poetry):
+4. Launch the application:
 ```bash
-poetry install
+python src/main.py
 ```
 
----
+## Usage
+- **Creating a new file**: Click on File > New or use Ctrl+N
+- **Opening a file**: Click on File > Open or use Ctrl+O
+- **Saving a file**: Click on File > Save or use Ctrl+S
+- **Changing theme**: Navigate to Settings > Themes and select your preferred color scheme
+- **Find text**: Press Ctrl+F and enter the text you want to find
+- **Replace text**: Press Ctrl+H to open the find and replace dialog
 
-## Running
-
-```bash
-python -m texiteditor
-```
-
-Or if an entry script exists:
-```bash
-python main.py
-```
-
----
-
-## Configuration
-
-Planned configuration hierarchy (override order: later wins):
-
-1. Default internal settings
-2. User config file (e.g., `~/.config/texiteditor/config.toml` or `%APPDATA%\TexitEditor\config.toml`)
-3. Command-line flags (e.g., `--theme dark --font "Fira Code 12"`)
-
-Example (proposed) `config.toml`:
-```toml
-theme = "dark"
-font_family = "Fira Code"
-font_size = 13
-show_line_numbers = true
-```
-
----
-
-## Command-Line Options (Proposed)
-
-| Flag | Description |
-|------|-------------|
-| `--file <path>` | Open a file on launch |
-| `--theme <name>` | Force a theme |
-| `--encoding <enc>` | Specify file encoding |
-| `--readonly` | Open in read-only mode |
-
----
-
-## Extension System (Planned Concept)
-
-Extensions could be simple Python files placed in `extensions/` implementing a `register(app)` function:
-
-```python
-def register(app):
-    app.menu.add_item("Tools", "Sort Lines", lambda: sort_current_buffer(app))
-```
-
-Security note: Only load trusted extensions.
-
----
-
-## Testing
-
-(Adjust once tests exist.)
-
-```bash
-pytest -q
-```
-
-Continuous integration can be added with a workflow file:
-
-```
-.github/workflows/ci.yml
-```
-
----
-
-## Roadmap (Initial Draft)
-
-| Milestone | Goals |
-|-----------|-------|
-| v0.1 | Basic open/save/edit, minimal UI |
-| v0.2 | Find/replace, recent files |
-| v0.3 | Syntax highlighting, themes |
-| v0.4 | Extensions API v1 |
-| v1.0 | Stable API, packaging, documentation |
-
----
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`feat/short-description`)
-3. Write clear commits
-4. Include/update tests when possible
-5. Submit a pull request with a clear description
-
-Coding style: Follow PEP 8 (use `ruff` or `flake8` + `black`).
-
----
-
-## File / Directory Layout (Planned Example)
-
+## Project Structure
 ```
 TexitEditor/
-├── texiteditor/
-│   ├── __init__.py
-│   ├── app.py
-│   ├── ui/
-│   │   ├── main_window.py
-│   │   └── dialogs.py
+├── assets/
+│   ├── fonts/
+│   │   └── retro_font.ttf
+│   ├── images/
+│   │   ├── logo.png
+│   │   └── screenshots/
+│   └── themes/
+│       ├── blue_theme.json
+│       ├── green_theme.json
+│       └── purple_theme.json
+├── src/
+│   ├── main.py
 │   ├── editor/
-│   │   ├── buffer.py
-│   │   └── syntax.py
-│   ├── services/
-│   │   ├── files.py
-│   │   └── settings.py
-│   ├── extensions/
-│   │   └── sample_extension.py
+│   │   ├── __init__.py
+│   │   ├── text_area.py
+│   │   └── syntax_highlighter.py
+│   ├── ui/
+│   │   ├── __init__.py
+│   │   ├── main_window.py
+│   │   ├── menu_bar.py
+│   │   └── dialogs.py
 │   └── utils/
-│       └── logging.py
+│       ├── __init__.py
+│       ├── file_operations.py
+│       └── settings_manager.py
 ├── tests/
-│   └── test_basic.py
-├── requirements.txt (or pyproject.toml)
+│   ├── test_editor.py
+│   └── test_file_operations.py
+├── .gitignore
+├── LICENSE
 ├── README.md
-└── LICENSE
+└── requirements.txt
 ```
 
----
+## Technology Stack
+- **Python**: Core programming language
+- **Tkinter**: Standard GUI toolkit for the user interface
+- **CustomTkinter**: Modern UI components for Tkinter
+- **Pygments**: Syntax highlighting library
+- **PyInstaller**: For creating standalone executables
 
-## Logging (Proposed)
+## Customization
+TexitEditor allows for extensive customization:
 
-Basic logging using Python’s `logging` module:
+1. **Themes**: Choose from pre-defined themes or create your own in `assets/themes/`
+2. **Fonts**: Add custom fonts to the `assets/fonts/` directory
+3. **Keyboard Shortcuts**: Customize shortcuts in Settings > Keyboard
 
-```python
-import logging
-logger = logging.getLogger("texiteditor")
-logger.setLevel(logging.INFO)
-```
+## Contributing
+Contributions are welcome! To contribute:
 
----
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Commit your changes: `git commit -m 'Add some feature'`
+5. Push to the branch: `git push origin feature-name`
+6. Submit a pull request
 
-## Internationalization (Future Consideration)
-
-- Extract UI strings
-- Provide `.po` / `.mo` files
-- Allow language override via CLI/env
-
----
-
-## Performance Considerations
-
-- Lazy-load large files
-- Avoid full-text re-highlighting on each keystroke (use region diffing)
-- Debounce expensive operations (spell check, indexing)
-
----
-
-## Security Considerations
-
-- Sanitize paths (avoid directory traversal in future plugin loading)
-- Optional sandbox or permission prompts for extensions performing I/O
-
----
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Specify a license (e.g., MIT, Apache 2.0). Add a `LICENSE` file.
+## Acknowledgments
+- Inspired by the classic TextPad editor
+- Special thanks to all contributors
+- Icon and design elements from [source]
 
----
-
-## Attribution
-
-Developed by the TexitEditor project maintainers.
-
----
-
-## FAQ (Draft)
-
-**Q: Why another text editor?**  
-A: Educational and customizable foundation for Python-based GUI tooling.
-
-**Q: Will there be plugin isolation?**  
-A: Initial versions likely trust local Python code; future versions may add isolation boundaries.
-
-**Q: Does it support large files?**  
-A: Planned optimizations; early versions may struggle with very large (>10MB) files.
+## Contact
+- Developer: [Al Mamun](https://github.com/almamun80git)
+- Project Link: [https://github.com/almamun80git/TexitEditor](https://github.com/almamun80git/TexitEditor)
 
 ---
-
-## Status
-
-This is an early-stage project; core implementation details may change significantly.
-
----
-
-## Changelog (To Begin After First Release)
-
-Create `CHANGELOG.md` following Keep a Changelog format once versions are tagged.
-
----
-
-## Inspiration
-
-- Simplicity of Notepad
-- Extensibility of lightweight scriptable editors
-
----
-
-(End of draft)
+Last updated: 2025-10-03
+```
