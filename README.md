@@ -57,7 +57,7 @@ python texiteditor.py
 - **Creating a new file**: Click on File > New or use Ctrl+N
 - **Opening a file**: Click on File > Open or use Ctrl+O
 - **Saving a file**: Click on File > Save or use Ctrl+S
-- **Changing theme**: Navigate to Settings > Themes and select your preferred color scheme
+- **Changing theme**: Navigate to Format > Color Scheme and select your preferred color scheme
 - **Find text**: Press Ctrl+F and enter the text you want to find
 - **Find & Replace**: Press Ctrl+F to open the find and replace dialog
 
