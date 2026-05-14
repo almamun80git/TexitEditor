@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
 4. Launch the application:
 ```bash
-python src/main.py
+python texiteditor.py
 ```
 
 ## Usage
@@ -59,58 +59,32 @@ python src/main.py
 - **Saving a file**: Click on File > Save or use Ctrl+S
 - **Changing theme**: Navigate to Settings > Themes and select your preferred color scheme
 - **Find text**: Press Ctrl+F and enter the text you want to find
-- **Replace text**: Press Ctrl+H to open the find and replace dialog
+- **Find & Replace**: Press Ctrl+F to open the find and replace dialog
 
 ## Project Structure
-```
+```text
 TexitEditor/
-├── assets/
-│   ├── fonts/
-│   │   └── retro_font.ttf
-│   ├── images/
-│   │   ├── logo.png
-│   │   └── screenshots/
-│   └── themes/
-│       ├── blue_theme.json
-│       ├── green_theme.json
-│       └── purple_theme.json
-├── src/
-│   ├── main.py
-│   ├── editor/
-│   │   ├── __init__.py
-│   │   ├── text_area.py
-│   │   └── syntax_highlighter.py
-│   ├── ui/
-│   │   ├── __init__.py
-│   │   ├── main_window.py
-│   │   ├── menu_bar.py
-│   │   └── dialogs.py
-│   └── utils/
-│       ├── __init__.py
-│       ├── file_operations.py
-│       └── settings_manager.py
-├── tests/
-│   ├── test_editor.py
-│   └── test_file_operations.py
-├── .gitignore
+├── Dockerfile.browser
 ├── LICENSE
 ├── README.md
-└── requirements.txt
+├── docker-compose.browser.yml
+├── requirements.txt
+├── src/
+│   └── README.md
+└── texiteditor.py
 ```
 
 ## Technology Stack
 - **Python**: Core programming language
 - **Tkinter**: Standard GUI toolkit for the user interface
-- **CustomTkinter**: Modern UI components for Tkinter
 - **Pygments**: Syntax highlighting library
-- **PyInstaller**: For creating standalone executables
 
 ## Customization
 TexitEditor allows for extensive customization:
 
-1. **Themes**: Choose from pre-defined themes or create your own in `assets/themes/`
-2. **Fonts**: Add custom fonts to the `assets/fonts/` directory
-3. **Keyboard Shortcuts**: Customize shortcuts in Settings > Keyboard
+1. **Themes**: Choose from built-in color schemes in the Format > Color Scheme menu
+2. **Fonts**: Select your preferred editor font from the Format > Font menu
+3. **Keyboard Shortcuts**: Use built-in shortcuts like Ctrl+N, Ctrl+O, Ctrl+S, and Ctrl+F
 
 ## Contributing
 Contributions are welcome! To contribute:
@@ -121,8 +95,6 @@ Contributions are welcome! To contribute:
 4. Commit your changes: `git commit -m 'Add some feature'`
 5. Push to the branch: `git push origin feature-name`
 6. Submit a pull request
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -137,5 +109,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Project Link: [https://github.com/almamun80git/TexitEditor](https://github.com/almamun80git/TexitEditor)
 
 ---
-Last updated: 2025-10-03
-```
+Last updated: 2026-05-14
